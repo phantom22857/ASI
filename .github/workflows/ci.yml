@@ -7,8 +7,6 @@ permissions:
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
@@ -37,9 +35,8 @@ jobs:
           username: phantom22857
           password: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
+      - run: |
+          docker build -t ghcr.io/${{ github.repository }}:latest -f app/Dockerfile app
 
       - run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/asi:latest -f app/Dockerfile app
-
-      - run: |
-          docker push ghcr.io/${{ github.repository_owner }}/asi:latest
+          docker push ghcr.io/${{ github.repository }}:latest
