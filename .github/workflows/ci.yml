@@ -36,7 +36,8 @@ jobs:
           password: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
       - run: |
-          docker build -t ghcr.io/${{ github.repository }}:latest -f app/Dockerfile app
-
+          docker build -t ghcr.io/${{ github.repository | toLowerCase }}:latest -f app/Dockerfile app
+      
       - run: |
-          docker push ghcr.io/${{ github.repository }}:latest
+          docker push ghcr.io/${{ github.repository | toLowerCase }}:latest
+
