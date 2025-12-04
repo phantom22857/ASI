@@ -36,7 +36,7 @@ jobs:
           password: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
       - run: |
-          docker build -t ghcr.io/phantom22857/asi-repo:latest -f app/Dockerfile app
+          docker build -t ghcr.io/phantom22857/asi/asi:latest -f app/Dockerfile app
 
       - run: |
-          docker push ghcr.io/phantom22857/asi-repo:latest
+          docker push ghcr.io/phantom22857/asi/asi:latest
